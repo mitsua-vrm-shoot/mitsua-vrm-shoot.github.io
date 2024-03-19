@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>Mitsua VRM shoot!</title>
+    <meta charset="utf-8">
+    <meta content="https://elanmitsua.com/assets/images/ogp.png" property="og:image">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="main.css">
+		<style>
+			a {
+				color: #f00;
+			}
+      :root {
+      --tp-base-background-color: hsla(230, 20%, 11%, 1.00);
+      --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+      --tp-button-background-color: hsla(230, 10%, 80%, 1.00);
+      --tp-button-background-color-active: hsla(230, 10%, 95%, 1.00);
+      --tp-button-background-color-focus: hsla(230, 10%, 90%, 1.00);
+      --tp-button-background-color-hover: hsla(230, 10%, 85%, 1.00);
+      --tp-button-foreground-color: hsla(230, 20%, 11%, 1);
+      --tp-container-background-color: hsla(230, 25%, 16%, 1.00);
+      --tp-container-background-color-active: hsla(230, 25%, 31%, 1.00);
+      --tp-container-background-color-focus: hsla(230, 25%, 26%, 1.00);
+      --tp-container-background-color-hover: hsla(230, 25%, 21%, 1.00);
+      --tp-container-foreground-color: hsla(230, 10%, 80%, 1.00);
+      --tp-groove-foreground-color: hsla(230, 20%, 8%, 1.00);
+      --tp-input-background-color: hsla(230, 20%, 8%, 1.00);
+      --tp-input-background-color-active: hsla(230, 28%, 23%, 1.00);
+      --tp-input-background-color-focus: hsla(230, 28%, 18%, 1.00);
+      --tp-input-background-color-hover: hsla(230, 20%, 13%, 1.00);
+      --tp-input-foreground-color: hsla(230, 10%, 80%, 1.00);
+      --tp-label-foreground-color: hsla(230, 12%, 48%, 1.00);
+      --tp-monitor-background-color: hsla(230, 20%, 8%, 1.00);
+      --tp-monitor-foreground-color: hsla(230, 12%, 48%, 1.00);
+    }
+      </style>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Noto Sans JP:400,700', 'Noto Sans:400,700', 'Noto Color Emoji']
+        },
+        active: function() {
+          sessionStorage.fonts = true;
+        }
+    });
+    </script>
+  </head>
+  <body>
+    <div id="loadingOverlay" style="display: flex;">
+      <progress id="progressBar" value="0" max="100"></progress>
+      <div id="loadingMessage">読み込み中...</div>
+    </div>
+
+    
+    <div id="canvas"></div>
+    <div class="button-container">
+      <button id="undo" class="ui-button">
+        ↩
+        <span class="tooltip">元に戻す</span>
+      </button>
+      <button id="redo" class="ui-button">
+        ↪
+        <span class="tooltip">やり直し</span>
+      </button>
+      <button id="shoot" class="ui-button">
+        📸
+        <span class="tooltip">スクリーンショット</span>
+      </button>
+      <button id="help" class="ui-button">
+        ❓
+        <span class="tooltip">ヘルプ</span>
+      </button>
+    </div>
+    
+    <div id="customDialog" class="custom-dialog" style="display: none;">
+      <div class="dialog-content">
+        <p id="dialogMessage"></p>
+        <button id="okButton">OK</button>
+        <button id="cancelButton">Cancel</button>
+      </div>
+    </div>
+
+    <div id="tweakpaneUiContainer">
+    </div>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+body {
+	margin: 0;
+	background-color: #282828;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 13px;
+	line-height: 24px;
+	overscroll-behavior: none;
+	cursor: default;
+}
+
+a {
+	color: #ff0;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+button {
+	cursor: pointer;
+}
+
+.button-container {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media (min-width: 768px) {
+	.button-container {
+		left: 50%;
+		transform: translateX(calc(-50% - 120px));
+	}
+}
+
+.ui-button {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-family: "Noto Color Emoji";
+	background-color: hsla(230, 10%, 95%, 1.00);
+	color: hsla(230, 10%, 80%, 1.00);
+	padding: 0;
+	margin: 5px;
+	border: 1px solid hsla(230, 10%, 50%, 1.00);
+	cursor: pointer;
+	border-radius: 50%;
+	transition: all 0.3s ease 0s;
+	z-index: 1; /* TODO Solve this in HTML */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.ui-button:hover {
+	background-color: hsla(230, 10%, 80%, 1.00);
+}
+
+.tooltip {
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-bottom: 10px;
+	padding: 5px;
+	background-color: #444;
+	color: #ccc;
+	text-align: center;
+	font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+	border-radius: 6px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s, visibility 0s linear 0.2s;
+	z-index: 3;
+	max-width: 200px;
+	min-width: 50px;
+	white-space: nowrap;
+	height: 20px;
+}
+
+.ui-button:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
+}
+
+.custom-dialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 4;
+}
+
+.dialog-content {
+	background-color: #444;
+	color: #ccc;
+	padding: 20px;
+	border-radius: 6px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+.dialog-content p {
+	font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+}
+
+.dialog-content button {
+	margin: 10px;
+	background-color: #666;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+}
+
+.dialog-content button:hover {
+	background-color: #777;
+}
+
+#info {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	z-index: 1; /* TODO Solve this in HTML */
+}
+
+a, button, input, select {
+	pointer-events: auto;
+}
+
+#notSupported {
+	width: 50%;
+	margin: auto;
+	background-color: #f00;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    color: #ccc;
+    font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+}
+
+#progressBar {
+    width: 50%;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progressBar::-webkit-progress-bar {
+    background-color: #444;
+}
+
+#progressBar::-webkit-progress-value {
+    background-color: #ccc;
+}
+
+#progressBar::-moz-progress-bar {
+    background-color: #ccc;
+}
+
+#loadingMessage {
+    margin-top: 10px;
+}
+
+#tweakpaneUiContainer {
+    position: fixed;
+    top: 50%;
+    padding-right: 4px;
+    padding-bottom: 8px;
+    right: 1rem;
+    width: var(--tweakpane-ui-container-width);
+    height: auto;
+    overflow-y: scroll;
+    z-index: 2;
+    pointer-events: auto;
+    max-height: calc(50% - 55px);
+    border-radius: 0.5rem;
+}
+
+@media (min-width: 768px) {
+	#tweakpaneUiContainer {
+		top: 1rem;
+		max-height: calc(100% - 2rem);
+	}
+}
+
+#canvas {
+	cursor: move;
+}
+
+::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, .5);
+}
+::-webkit-scrollbar-thumb {
+    background: hsla(230, 7%, 70%, 1.00);
+    border-radius: 6px;
+}
+::-webkit-scrollbar-track {
+    background: hsla(230, 10%, 30%, 1.00) !important;
+    border-radius: 6px;
+}
+:root {
+	--tp-base-font-family: "Noto Sans", "Noto Sans JP", "Noto Color Emoji", sans-serif !important;
+}
