@@ -7,32 +7,6 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link type="text/css" rel="stylesheet" href="main.css">
 		<style>
-			a {
-				color: #f00;
-			}
-      :root {
-      --tp-base-background-color: hsla(230, 20%, 11%, 1.00);
-      --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
-      --tp-button-background-color: hsla(230, 10%, 80%, 1.00);
-      --tp-button-background-color-active: hsla(230, 10%, 95%, 1.00);
-      --tp-button-background-color-focus: hsla(230, 10%, 90%, 1.00);
-      --tp-button-background-color-hover: hsla(230, 10%, 85%, 1.00);
-      --tp-button-foreground-color: hsla(230, 20%, 11%, 1);
-      --tp-container-background-color: hsla(230, 25%, 16%, 1.00);
-      --tp-container-background-color-active: hsla(230, 25%, 31%, 1.00);
-      --tp-container-background-color-focus: hsla(230, 25%, 26%, 1.00);
-      --tp-container-background-color-hover: hsla(230, 25%, 21%, 1.00);
-      --tp-container-foreground-color: hsla(230, 10%, 80%, 1.00);
-      --tp-groove-foreground-color: hsla(230, 20%, 8%, 1.00);
-      --tp-input-background-color: hsla(230, 20%, 8%, 1.00);
-      --tp-input-background-color-active: hsla(230, 28%, 23%, 1.00);
-      --tp-input-background-color-focus: hsla(230, 28%, 18%, 1.00);
-      --tp-input-background-color-hover: hsla(230, 20%, 13%, 1.00);
-      --tp-input-foreground-color: hsla(230, 10%, 80%, 1.00);
-      --tp-label-foreground-color: hsla(230, 12%, 48%, 1.00);
-      --tp-monitor-background-color: hsla(230, 20%, 8%, 1.00);
-      --tp-monitor-foreground-color: hsla(230, 12%, 48%, 1.00);
-    }
       </style>
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <script type="text/javascript" src="main.js"></script>
@@ -51,39 +25,69 @@
   <body>
     <div id="loadingOverlay" style="display: flex;">
       <progress id="progressBar" value="0" max="100"></progress>
-      <div id="loadingMessage">読み込み中...</div>
+      <div id="loadingMessage">Loading...</div>
     </div>
 
+
+    <div class="toolbar">
+      <input type="text" id="readonlyField" value="" readonly>
+      <button id="copyButton">📋Copy<span class="tooltip" id="copy-clipboard">クリップボードにコピー</span></button>
+    </div>
     
     <div id="canvas"></div>
     <div class="button-container">
       <button id="undo" class="ui-button">
         ↩
-        <span class="tooltip">元に戻す</span>
+        <span class="tooltip" id="undo-text">元に戻す</span>
       </button>
       <button id="redo" class="ui-button">
         ↪
-        <span class="tooltip">やり直し</span>
+        <span class="tooltip" id="redo-text">やり直し</span>
       </button>
       <button id="shoot" class="ui-button">
         📸
-        <span class="tooltip">スクリーンショット</span>
+        <span class="tooltip" id="shoot-text">撮影</span>
+      </button>
+      <button id="clip" class="ui-button">
+        🖇️
+        <span class="tooltip" id="clip-text">撮影+タグ</span>
       </button>
       <button id="help" class="ui-button">
         ❓
-        <span class="tooltip">ヘルプ</span>
+        <span class="tooltip" id="help-text">ヘルプ</span>
       </button>
+    </div>
+    <div class="button-container-2">
+      v0.0.1
+      ©Abstract Engine
+      <a href="https://elanmitsua.notion.site/Mitsua-VRM-Shoot-4e7d16d094794094b8891aab9d034030" target="_blank" id="tos">利用規約</a>
+      <button id="show-modal-btn">ライセンス表示</button>
     </div>
     
     <div id="customDialog" class="custom-dialog" style="display: none;">
       <div class="dialog-content">
         <p id="dialogMessage"></p>
         <button id="okButton">OK</button>
-        <button id="cancelButton">Cancel</button>
+        <button id="cancelButton">キャンセル</button>
       </div>
     </div>
 
     <div id="tweakpaneUiContainer">
+      <div id="langSelector">
+        Language:
+        <label><input type="radio" name="language" value="ja" id="lang-ja"> 日本語</label>
+        <label><input type="radio" name="language" value="en" id="lang-en"> English</label>  
+      </div>
     </div>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-innerContent">
+          <pre id="modal-textContent"></pre>
+        </div>
+        <button id="close-modal">OK</button>
+      </div>
+    </div>
+
   </body>
 </html>
